@@ -42,7 +42,7 @@
     var members;
     var expHistory;
 
-    fetch("https://gist.githubusercontent.com/RegexMC/796de6cd31cd25e2223d78bbb716fe05/raw/guild.json").then(r => r.json()).then(data => {
+    fetch("https://api.slothpixel.me/api/guilds/3a3c9d90ab9847b4bc5d73196a65e1d9").then(r => r.json()).then(data => {
         expHistory = data.exp_history;
         members = data.members;
 
