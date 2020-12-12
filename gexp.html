@@ -38,9 +38,13 @@
 </body>
 
 </html>
+
 <script>
+    var uuid;
     var members;
     var expHistory;
+    var memberExpHistory;
+    var playerNameElement = document.getElementById("playername");
 
     fetch("https://api.slothpixel.me/api/guilds/3a3c9d90ab9847b4bc5d73196a65e1d9").then(r => r.json()).then(data => {
         expHistory = data.exp_history;
@@ -54,14 +58,11 @@
         }
     });
 
-    var memberExpHistory;
-    var uuid;
-
-    document.getElementById("playername").addEventListener("keyup", function (event) {
+    playerNameElement.addEventListener("keyup", function (event) {
         event.preventDefault();
         if (event.keyCode === 13) {
-            if (document.getElementById("playername").value.match(/^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-5][0-9a-f]{3}-?[089ab][0-9a-f]{3}-?[0-9a-f]{12}$/gi)) {
-                uuid = document.getElementById("playername").value;
+            if (playerNameElement.value.match(/^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-5][0-9a-f]{3}-?[089ab][0-9a-f]{3}-?[0-9a-f]{12}$/gi)) {
+                uuid = playerNameElement.value;
                 memberExpHistory = members.filter(obj => obj.uuid == uuid)[0].exp_history;
 
                 for (var key in memberExpHistory) {
